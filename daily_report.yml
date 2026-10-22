@@ -1,0 +1,65 @@
+# create_daily_report.py / create_work_plan.py を自動実行するワークフロー
+#
+# 事前準備(GitHubリポジトリ側の設定):
+#   1. このリポジトリの Settings > Secrets and variables > Actions を開く
+#   2. 以下の2つを "New repository secret" として登録する
+#        GMAIL_ADDRESS      : 自分のGmailアドレス
+#        GMAIL_APP_PASSWORD : 発行したアプリパスワード
+#
+# 実行タイミング:
+#   - 日報下書き作成: 「作業計画」メール送信(10:20頃)直後 → 10:35 JST(01:35 UTC)
+#   - 翌日分の作業計画下書き作成: 日報メール送信(14:50頃)後 → 16:00 JST(07:00 UTC)
+#   ※ cronの曜日は 0=日曜,1=月曜,...,6=土曜 (月〜金は1-5)。
+
+name: Create Daily Report and Work Plan
+
+on:
+  schedule:
+    - cron: "35 1 * * 1-5"  # 10:35 JST: 日報下書き作成
+    - cron: "0 7 * * 1-5"   # 16:00 JST: 翌日分の作業計画下書き作成
+  workflow_dispatch: {}  # 手動実行もできるようにしておく(Actionsタブから"Run workflow")
+
+jobs:
+  create-daily-report:
+    # 10:15のスケジュール、または手動実行のときだけ動く
+    if: github.event.schedule == '35 1 * * 1-5' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Pythonをセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 依存ライブラリをインストール
+        run: pip install beautifulsoup4      
+
+      - name: 日報下書き作成スクリプトを実行
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python create_daily_report.py
+
+  create-work-plan:
+    # 16:00のスケジュール、または手動実行のときだけ動く
+    if: github.event.schedule == '0 7 * * 1-5' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Pythonをセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 依存ライブラリをインストール
+        run: pip install beautifulsoup4
+
+      - name: 作業計画下書き作成スクリプトを実行
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python create_work_plan.py
