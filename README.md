@@ -79,7 +79,7 @@ flowchart TD
 
 ## 苦労した点・学んだこと
 - Beautiful soup4単体ではログイン操作やセッション維持ができないということを知らず、WebページのHTML解析を実現するまでに時間がかかった。Seleniumと組み合わせることで解決した。
-- オンスケジュールでプログラムが実行されない問題が起こった際、プログラムの不備なのかGitHub Actions側の障害などが原因なのかを判別するのに時間がかかった。[GitHub Status](https://www.githubstatus.com/)やネット上の記事を参照してGitHub Actionsのスケジューラの遅延であるらしいことがわかった。
+- オンスケジュールでプログラムが実行されない問題が起こった際、プログラムの不備なのかGitHub Actions側の障害などが原因なのかを判別するのに時間がかかった。[GitHub Status](https://www.githubstatus.com/)やネット上の記事を参照した結果、GitHub Actionsのスケジューラの遅延であるらしいことがわかった。
 
 ## 今後の改善
 - スケジューラの遅延への対策。
