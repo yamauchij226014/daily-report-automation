@@ -8,6 +8,19 @@
 - 転記ミスやメールの作成忘れといったミスを防ぎたかった。
 - 訓練で実用できるツールであるため、学習のモチベーションになると思った。
 
+## ディレクトリ構成と機能
+```text
+.
+├── .github/
+│   └── workflows/
+│       └── daily_report.yml    # GitHub Actions定義（朝・夕の自動実行スケジュール）
+├── create_daily_report.py      # 日報メール作成スクリプト（夕方実行）
+├── create_work_plan.py         # 作業計画メール作成スクリプト（朝実行）
+├── daily_report_common.py      # メール作成・IMAP処理などの共通モジュール
+├── weekly_schedule_to_draft.py # 施設Webサイトからスケジュール情報を取得するスクリプト（ローカル手動実行）
+└── README.md                   # 本ドキュメント
+```
+
 ## 機能とファイル構成
 1. 就労移行支援施設のサイトから訓練スケジュール情報を取得する(`weekly_schedule_to_draft.py`)
 2. ドラフト内に用意したテンプレートから新規作業計画メールを作成し、メールの指定箇所に**1**で取得したスケジュール情報を挿入する(`create_work_plan.py`, `daily_report_common.py`)
