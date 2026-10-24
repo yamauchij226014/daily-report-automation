@@ -45,46 +45,6 @@ flowchart TD
         
         S2[create_work_plan.py\n+ daily_report_common.py]
         S3[create_daily_report.py\n+ daily_report_common.py]
-        
-        Cron -- ③ 作業計画メール作成<br>（朝の実行） --> S2
-        Cron -- ④ 日報メール作成<br>（夕方の実行） --> S3
-    end
-
-    %% ① スケジュール取得のフロー (ローカル)
-    S1 -- ① アクセス・HTML解析\n(Selenium, BeautifulSoup) --> Web
-    Web -. スケジュール情報 .-> S1
-    S1 -- ② スケジュール情報を\n下書きメールとして保存 --> Mail
-
-    %% ② 作業計画作成のフロー (Actions)
-    S2 -- ③-i<br>作業計画のテンプレート、\nスケジュール情報を取得 --> Mail
-    S2 -- ③-ii<br>作業計画メール\nを作成 --> Mail
-
-    %% ③ 日報作成のフロー (Actions)
-    S3 -- ④-i<br>日報のテンプレート、<br>朝に送信した\n作業計画の内容を取得 --> Mail
-    S3 -- ④-ii<br>日報メール\nを作成 --> Mail
-
-    %% スタイリング
-    classDef python fill:#f9f0ff,stroke:#6e40c9,stroke-width:2px;
-    class S1,S2,S3 python;
-```
-
-```mermaid
-flowchart TD
-    %% 環境の定義
-    subgraph Local[ローカルPC環境: 手動実行]
-        S1[weekly_schedule_to_draft.py]
-    end
-
-    subgraph External[外部サービス]
-        Web{{就労移行支援施設 Webサイト}}
-        Mail[(メールサーバー / IMAP)]
-    end
-
-    subgraph Actions[GitHub Actions: 自動実行]
-        Cron[[.github/workflows/daily_report.yml]]
-        
-        S2[create_work_plan.py\n+ daily_report_common.py]
-        S3[create_daily_report.py\n+ daily_report_common.py]
     end
 
     %% 配置を「ローカル → 外部サービス → Actions」の順に強制する不可視リンク
