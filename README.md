@@ -22,10 +22,14 @@
 ```
 
 ## 機能とファイル構成
-1. 就労移行支援施設のサイトから訓練スケジュール情報を取得する(`weekly_schedule_to_draft.py`)
-2. ドラフト内に用意したテンプレートから新規作業計画メールを作成し、メールの指定箇所に**1**で取得したスケジュール情報を挿入する(`create_work_plan.py`, `daily_report_common.py`)
-3. ドラフト内に用意したテンプレートから新規日報メールを作成し、メールの指定箇所にその日送信した作業計画メールの内容を抜粋・転記する(`create_daily_report.py`, `daily_report_common.py`)
-4. **2**と**3**のプログラムを指定したスケジュールで実行する(`daily_report.yml`)
+1. スケジュール情報取得 (weekly_schedule_to_draft.py):
+就労移行支援施設のWebサイトにアクセスし、訓練スケジュールを取得・保存します。
+2. 作業計画メールの生成 (create_work_plan.py / daily_report_common.py):
+下書き内のテンプレートに取得したスケジュール情報を自動挿入し、新規の作業計画メールを作成します。
+3. 日報メールの生成 (create_daily_report.py / daily_report_common.py):
+朝送信した作業計画メールの内容を自動で抜粋・転記し、日報メールの下書きを作成します。
+4. 定期実行処理 (daily_report.yml):
+GitHub Actionsを利用し、指定した時刻（朝・夕）に作業計画と日報の作成スクリプトを自動実行します。
 
 ## 使用技術
 |項目|使用技術・環境|
