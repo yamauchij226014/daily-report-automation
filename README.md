@@ -21,7 +21,7 @@
 └── README.md                   # 本ドキュメント
 ```
 
-## 機能とファイル構成
+## 主な機能
 1. スケジュール情報取得 ([`weekly_schedule_to_draft.py`](./weekly_schedule_to_draft.py)):  
 就労移行支援施設のWebサイトにアクセスし、訓練スケジュールを取得・保存します。
 2. 作業計画メールの生成 ([`create_work_plan.py`](./create_work_plan.py) / [`daily_report_common.py`](./daily_report_common.py)):  
