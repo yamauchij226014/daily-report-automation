@@ -38,7 +38,8 @@ from selenium.webdriver.common.by import By
 # ========== 設定項目 ==========
 
 URL = (
-    "https://"
+    "https://sites.google.com/kaienonline.com/trainingsite2020/home/"
+    "%E4%BB%8A%E6%9C%88%E3%81%AE%E8%A8%93%E7%B7%B4%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0"
 )
 
 # Selenium専用の一時プロファイル(実行後に削除する)
