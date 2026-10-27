@@ -2,7 +2,7 @@
 [![Daily Report Workflow](https://github.com/yamauchij226014/daily-report-automation/actions/workflows/daily_report.yml/badge.svg)](https://github.com/yamauchij226014/daily-report-automation/actions/workflows/daily_report.yml)
 
 ## 概要
-就労移行支援支援の訓練で毎日提出する作業計画メール、日報メールといった定型報告メールの下書きをGmailのドラフト内に自動作成するツールです。RPAの学習を兼ねて製作し、実際の訓練で毎日運用しています。<br>開発プロセスにおいては、生成AI（Claude）をコーディング・アシスタントとして活用しました。要件定義、プロンプトの設計、出力コードの構造理解、環境構築および動作検証・デバッグを行いながら完成させました。
+就労移行支援施設の訓練で毎日提出する作業計画メール、日報メールといった定型報告メールの下書きをGmailのドラフト内に自動作成するツールです。RPAの学習を兼ねて製作し、実際の訓練で毎日運用しています。<br>開発プロセスにおいては、生成AI（Claude）をコーディング・アシスタントとして活用しました。要件定義、プロンプトの設計、出力コードの読解、環境構築および動作検証・デバッグを行いながら完成させました。
 
 ## 背景と目的
 - 定型報告メールの内容には転記で済む部分がいくつかあり、自動化したかった。
