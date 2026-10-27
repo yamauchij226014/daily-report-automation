@@ -37,8 +37,8 @@ GitHub Actionsを利用し、指定した時刻（朝・夕）に作業計画と
 |---|---|
 |開発支援（AI）|Claude Sonnet 5.5|
 |プログラミング言語|Python 3.12|
-|ブラウザ操作|Selenium 4.48.0|
-|HTML解析|Beautiful Soup4 0.0.2|
+|ブラウザ操作|Selenium|
+|HTML解析|Beautiful Soup4|
 |メール操作|IMAP（Gmail）|
 |定期実行|GitHub Actions|
 |開発環境|Windows / PyCharm|
