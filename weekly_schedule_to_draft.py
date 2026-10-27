@@ -313,8 +313,8 @@ def main():
     finally:
         driver.quit()
         # ログイン情報を共用PCに残さないため、専用プロファイルを削除する
-        # shutil.rmtree(PROFILE_DIR, ignore_errors=True)
-        # print("一時プロファイルを削除しました。")
+        shutil.rmtree(PROFILE_DIR, ignore_errors=True)
+        print("一時プロファイルを削除しました。")
 
 
 if __name__ == "__main__":
